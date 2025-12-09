@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>💰 Expense Tracker</h1>
+        <!-- <button id="logoutBtn">Logout </button> -->
+        <a href="../login/login.html" id="logoutBtn">Logout</a>
+    </header>
+
+    <h2 id="welcomeMsg" class="welcome-message"></h2>
+
+    <main class="container">
+        <section class="summary">
+            <div class="card">
+                <h3>Total Budget</h3>
+                <p id="totalBudget">₹0</p>
+            </div>
+            <div class="card">
+                <h3>Total Spent</h3>
+                <p id="totalSpent">₹0</p>
+            </div>
+            <div class="card">
+                <h3>Remaining</h3>
+                <p id="remaining">₹0</p>
+            </div>
+        </section>
+
+        <section class="progress">
+            <h3>Spending Progress</h3>
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+        </section>
+
+        <section class="forms">
+            <!-- Budget Section -->
+            <div class="form-section">
+                <h2>💰 Set Your Budget</h2>
+                <form id="budgetForm">
+                    <input type="number" id="budgetInput" placeholder="Enter your total budget (₹)" required />
+                    <button type="submit">Set Budget</button>
+                </form>
+            </div>
+
+            <!-- Expense Section -->
+            <!-- Expense Section -->
+            <div class="form-section">
+                <h2>➕ Add New Expense</h2>
+                <form id="expenseForm">
+                    <input type="text" id="expenseName" placeholder="Expense Name" required />
+                    <input type="number" id="expenseAmount" placeholder="Amount (₹)" required />
+            
+                    <select id="expenseCategory" required>
+                        <option value="" disabled selected>Select Category</option>
+                        <option>Food</option>
+                        <option>Transport</option>
+                        <option>Rent</option>
+                        <option>Utilities</option>
+                        <option>Health</option>
+                        <option>Shopping</option>
+                        <option>Education</option>
+                        <option>Entertainment</option>
+                        <option>Other</option>
+                    </select>
+            
+                    <!-- 🗓 Added Date Option -->
+                    <input type="date" id="expenseDate" required />
+            
+                    <button type="submit">Add Expense</button>
+                </form>
+            </div>
+
+        </section>
+
+        <section class="chart">
+            <h3>Expense Distribution</h3>
+            <div class="chart-container">
+                <canvas id="expenseChart"></canvas>
+            </div>
+        </section>
+
+        <section class="history">
+            <h3>Expense History</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Edit Expense Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Expense</h2>
+            <form id="editForm">
+                <input type="text" id="editName" placeholder="Expense Name" required />
+                <input type="number" id="editAmount" placeholder="Amount" required />
+                <select id="editCategory" required>
+                    <option>Food</option>
+                    <option>Transport</option>
+                    <option>Rent</option>
+                    <option>Utilities</option>
+                    <option>Health</option>
+                    <option>Shopping</option>
+                    <option>Education</option>
+                    <option>Entertainment</option>
+                    <option>Other</option>
+                </select>
+                <div class="modal-actions">
+                    <button type="submit">Save</button>
+                    <button type="button" id="cancelEdit">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
